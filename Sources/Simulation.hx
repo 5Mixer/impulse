@@ -1,4 +1,4 @@
-package ;
+package;
 
 import kha.Scheduler;
 import nape.geom.Vec2;
@@ -6,60 +6,56 @@ import nape.phys.Body;
 import nape.phys.BodyType;
 import nape.shape.Polygon;
 import nape.space.Space;
-import nape.util.Debug;
+import kha.graphics2.Graphics;
 
 class Simulation {
-    var space:Space;
-    var debug:Debug;
-    var dynamite:Array<Dynamite> = [];
-    var tiles:Array<Tile> = [];
- 
-    public function new() {
-        var gravity = Vec2.weak(0, 600);
-        space = new Space(gravity);
- 
-        initialise();
-    }
- 
-    public function initialise() {
-        var w = 6000;
-        var h = 900;
+	var space:Space;
+	var plane:Plane;
+	var camera:Camera;
 
-        dynamite = [];
-        tiles = [];
-        space.clear();
+	var width = 10000;
+	var height = 2000;
 
-        for (i in 0...60)
-            tiles.push(new Tile(Math.floor(50*Math.random())*20,Math.floor(30*Math.random())*20,space));
-               
- 
-        // Create the floor for the simulation.
-        //   We use a STATIC type object, and give it a single
-        //   Polygon with vertices defined by Polygon.rect utility
-        //   whose arguments are (x, y) of top-left corner and the
-        //   width and height.
-        //
-        //   A static object does not rotate, so we don't need to
-        //   care that the origin of the Body (0, 0) is not in the
-        //   centre of the Body's shapes.
-        var floor = new Body(BodyType.STATIC);
-        floor.shapes.add(new Polygon(Polygon.rect(50, (h - 50), (w - 100), 1)));
-        floor.space = space;
- 
-        for (i in 0...500) {
-            dynamite.push(new Dynamite(i%70*20,Math.floor(i/70)*20, space));
-        }
-    }
+	public function new() {
+		var gravity = Vec2.weak(0, 800);
+		space = new Space(gravity);
 
-    public function update() {
-        space.step(1/60);
-    }
-    public function render(g:Graphics) {
-        for (dynamite in dynamite) {
-            dynamite.render(g);
-        }
-        for (tile in tiles) {
-            tile.render(g);
-        }
-    }
+		initialise();
+		camera = new Camera(width);
+	}
+
+	public function initialise() {
+		space.clear();
+
+		plane = new Plane(100, 100, space);
+
+		var boundary = new Body(BodyType.STATIC);
+		boundary.shapes.add(new Polygon(Polygon.rect(0, 0, -1, height)));
+		boundary.shapes.add(new Polygon(Polygon.rect(width, 0, 1, height)));
+		boundary.shapes.add(new Polygon(Polygon.rect(0, height, width, 1)));
+		boundary.space = space;
+	}
+
+	public function update() {
+		plane.update();
+		space.step(1 / 60);
+	}
+
+	public function render(g:Graphics) {
+		camera.follow(plane.body.position.x, plane.body.position.y);
+		camera.transform(g);
+		g.color = kha.Color.Black;
+		g.fillRect(0, 0, 1, height);
+		g.fillRect(0, height, width, 1);
+		g.fillRect(width, 0, 1, height);
+
+		for (x in 0...40) {
+			for (y in 0...40) {
+				g.fillRect(x * 150, y * 150, 6, 6);
+			}
+		}
+
+		plane.render(g);
+		camera.reset(g);
+	}
 }

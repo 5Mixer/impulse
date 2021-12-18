@@ -1,0 +1,10 @@
+{
+	"[haxe]": {
+		"editor.formatOnSave": true,
+		"editor.formatOnPaste": true
+	},
+	"files.associations": {
+		"utility": "cpp",
+		"variant": "cpp"
+	}
+}

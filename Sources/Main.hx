@@ -9,35 +9,38 @@ import kha.System;
 
 class Main {
 	var simulation:Simulation;
-	var graphics:Graphics;
+
 	function new() {
-
-		graphics = new Graphics();
-
-		System.start({title: "LD48", width: 800, height: 600}, function (_) {
-			Assets.loadEverything(function () {
+		System.start({title: "Fli", width: 800, height: 600}, function(_) {
+			Input.init();
+			Assets.loadEverything(function() {
 				init();
-				Scheduler.addTimeTask(function () { update(); }, 0, 1 / 60);
-				System.notifyOnFrames(function (framebuffers) { render(framebuffers[0]); });
+				Scheduler.addTimeTask(function() {
+					update();
+				}, 0, 1 / 60);
+				System.notifyOnFrames(function(framebuffers) {
+					render(framebuffers[0]);
+				});
 			});
 		});
 	}
+
 	function init() {
 		simulation = new Simulation();
-		Mouse.get().notify(function(b,x,y){
+		simulation.initialise();
+		kha.input.Keyboard.get().notify(function(k) {
 			simulation.initialise();
-		},null,null);
-
+		}, null);
 	}
+
 	function update() {
 		simulation.update();
 	}
 
-	function render(framebuffer: Framebuffer) {
+	function render(framebuffer:Framebuffer) {
 		var g = framebuffer.g2;
-		g.begin(true,kha.Color.fromValue(0xead2a1));
-		graphics.setG2(g);
-		simulation.render(graphics);
+		g.begin(true, kha.Color.fromValue(0xead2a1));
+		simulation.render(g);
 
 		g.end();
 	}
