@@ -7,9 +7,9 @@
    id="svg8"
    inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
    sodipodi:docname="plane.svg"
-   inkscape:export-filename="/home/mixer/projects/LD48/Assets/dynamite.png"
-   inkscape:export-xdpi="30"
-   inkscape:export-ydpi="30"
+   inkscape:export-filename="/home/mixer/projects/fli/Assets/plane.png"
+   inkscape:export-xdpi="192"
+   inkscape:export-ydpi="192"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -26,9 +26,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="34.527865"
-     inkscape:cx="13.771486"
-     inkscape:cy="5.9227525"
+     inkscape:zoom="256"
+     inkscape:cx="2.6816406"
+     inkscape:cy="9.3417969"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -61,8 +61,8 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       style="fill:#ffffff;stroke:#ffffff;stroke-width:0.264583px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.80000001;fill-opacity:1"
-       d="M 0.26458333,0.26458333 V 2.38125 L 7.6729167,1.3229167 Z"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:0.8;paint-order:stroke fill markers"
+       d="M 0,0 V 2.6458333 L 7.9375,1.3229167 Z"
        id="path942"
        sodipodi:nodetypes="cccc" />
   </g>
