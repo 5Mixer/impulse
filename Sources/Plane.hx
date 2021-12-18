@@ -15,8 +15,6 @@ class Plane {
 	var height = 10;
 	var image:kha.Image;
 
-	var maximumSpeed:Float = 3000;
-
 	public function new(x:Float, y:Float, space:Space) {
 		body = new Body(BodyType.DYNAMIC);
 
@@ -25,39 +23,19 @@ class Plane {
 		body.allowRotation = false;
 		body.setShapeMaterials(nape.phys.Material.glass());
 		body.space = space;
+		body.mass = 1;
 
 		image = kha.Assets.images.plane;
 	}
 
-	public function update() {
-		var forceAngle = body.rotation;
-		if (Input.isLeftDown()) {
-			body.rotation -= Math.PI / 2 * (body.velocity.length / 1000);
-		}
+	public function update(touchpad:Touchpad) {
 		if (Input.isRightDown()) {
-			body.rotation += Math.PI / 2 * (body.velocity.length / 1000);
+			body.applyImpulse(Vec2.weak(touchpad.getVector().x, touchpad.getVector().y).mul(40, true));
 		}
+		body.rotation = touchpad.angle;
 
-		var forceMultiplier = (Input.isLeftDown() || Input.isRightDown()) ? 40 : 0;
-		var forceVector = Vec2.weak(Math.cos(body.rotation) * forceMultiplier, Math.sin(body.rotation) * forceMultiplier);
-		body.applyImpulse(forceVector);
-		body.rotation = Math.atan2(body.velocity.y, body.velocity.x);
-
-		var airResistance = .001;
+		var airResistance = .01;
 		body.applyImpulse(Vec2.weak(-body.velocity.x * airResistance, -body.velocity.y * airResistance));
-
-		if (body.velocity.length > maximumSpeed) {
-			body.velocity.length = maximumSpeed;
-		}
-	}
-
-	function accelerateFlight() {
-		// var currentDirection = body.rotation;
-		// var forceDirection = currentDirection - 0.2;
-		body.rotation -= .05;
-		var forceMultiplier = 100.;
-		var forceVector = Vec2.weak(Math.cos(body.rotation) * forceMultiplier, Math.sin(body.rotation) * forceMultiplier);
-		body.applyImpulse(forceVector);
 	}
 
 	public function render(g:Graphics) {

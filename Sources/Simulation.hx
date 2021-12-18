@@ -1,5 +1,7 @@
 package;
 
+import kha.Window;
+import Touchpad;
 import kha.Scheduler;
 import nape.geom.Vec2;
 import nape.phys.Body;
@@ -16,9 +18,12 @@ class Simulation {
 	var width = 10000;
 	var height = 2000;
 
+	var touchpad:Touchpad;
+
 	public function new() {
-		var gravity = Vec2.weak(0, 800);
+		var gravity = Vec2.weak(0, 500);
 		space = new Space(gravity);
+		touchpad = new Touchpad();
 
 		initialise();
 		camera = new Camera(width);
@@ -37,7 +42,9 @@ class Simulation {
 	}
 
 	public function update() {
-		plane.update();
+		touchpad.screenPosition.x = 160;
+		touchpad.screenPosition.y = Window.get(0).height - 160;
+		plane.update(touchpad);
 		space.step(1 / 60);
 	}
 
