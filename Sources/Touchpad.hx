@@ -58,11 +58,11 @@ class Touchpad {
 	}
 
 	public function render(g:Graphics) {
-		g.color = kha.Color.White;
-		g.drawScaledImage(Assets.images.touchpad, screenPosition.x - radius, screenPosition.y - radius, radius * 2, radius * 2);
+		g.color = kha.Color.fromFloats(1, 1, 1, .2);
+		g.drawScaledImage(Assets.images.circle, screenPosition.x - radius, screenPosition.y - radius, radius * 2, radius * 2);
 
 		var touchPoint = screenPosition.add(new Vector2(Math.cos(angle) * length * radius, Math.sin(angle) * length * radius));
-		g.drawScaledImage(Assets.images.touchpad, touchPoint.x - visualFingerRadius, touchPoint.y - visualFingerRadius, visualFingerRadius * 2,
+		g.drawScaledImage(Assets.images.circle, touchPoint.x - visualFingerRadius, touchPoint.y - visualFingerRadius, visualFingerRadius * 2,
 			visualFingerRadius * 2);
 	}
 }

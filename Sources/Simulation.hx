@@ -22,6 +22,9 @@ class Simulation {
 
 	var touchpad:Touchpad;
 	var level:Level;
+	var target:Target;
+
+	var levelNumber = 1;
 
 	public function new() {
 		var gravity = Vec2.weak(0, 500);
@@ -39,15 +42,35 @@ class Simulation {
 		});
 	}
 
+	function getTargetListener() {
+		return new InteractionListener(CbEvent.BEGIN, InteractionType.ANY, Plane.callbackType, Target.callbackType, function(callback:InteractionCallback) {
+			nextLevel();
+		});
+	}
+
+	function nextLevel() {
+		if (levelNumber == 5)
+			return;
+		levelNumber++;
+		initialise();
+	}
+
 	public function initialise() {
 		space.clear();
 		space.listeners.add(getCollisionListener());
+		space.listeners.add(getTargetListener());
 
-		level = new Level(1);
+		level = new Level(levelNumber);
 		var boundary = new Body(BodyType.STATIC);
 		for (shape in level.colliders)
 			boundary.shapes.add(shape);
 		boundary.space = space;
+
+		for (entity in level.tiled.entities) {
+			if (entity.type == "Target") {
+				target = new Target(entity.position.x, entity.position.y, space);
+			}
+		}
 
 		plane = new Plane(200, 0, space);
 
@@ -80,6 +103,7 @@ class Simulation {
 		g.color = kha.Color.White;
 
 		level.render(g);
+		target.render(g);
 
 		plane.render(g);
 		camera.reset(g);
