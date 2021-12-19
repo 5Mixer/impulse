@@ -50,7 +50,7 @@ class Plane {
 		body.applyImpulse(Vec2.weak(-body.velocity.x * airResistance, -body.velocity.y * airResistance));
 	}
 
-	public function render(g:Graphics) {
+	public function render(g:Graphics, touchpadAngle:Float) {
 		g.color = kha.Color.fromBytes(250, 231, 192);
 
 		if (locations.length > trailLength)
@@ -64,7 +64,7 @@ class Plane {
 
 		g.color = kha.Color.fromBytes(62, 54, 64);
 		g.pushTransformation(g.transformation.multmat(FastMatrix3.translation(body.position.x, body.position.y))
-			.multmat(FastMatrix3.rotation(body.rotation))
+			.multmat(FastMatrix3.rotation(touchpadAngle)) // body.rotation is the real rotation, but can lag a frame.
 			.multmat(FastMatrix3.translation(-body.position.x, -body.position.y)));
 
 		g.drawScaledImage(image, body.position.x - width / 2, body.position.y - height / 2, width, height);

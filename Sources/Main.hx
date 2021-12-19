@@ -1,7 +1,5 @@
 package;
 
-import kha.input.Mouse;
-import kha.input.Keyboard;
 import kha.Assets;
 import kha.Framebuffer;
 import kha.Scheduler;
@@ -11,7 +9,7 @@ class Main {
 	var simulation:Simulation;
 
 	function new() {
-		System.start({title: "Fli", width: 800, height: 600}, function(_) {
+		System.start({title: "Impulse", width: 800, height: 600}, function(_) {
 			Input.init();
 			Assets.loadEverything(function() {
 				init();
@@ -41,7 +39,6 @@ class Main {
 		var g = framebuffer.g2;
 		g.begin(true, kha.Color.fromValue(0xead2a1));
 		simulation.render(g);
-
 		g.end();
 	}
 

@@ -11,14 +11,10 @@ class Level {
 	public static var callbackType = new CbType();
 
 	public function new(levelNumber) {
-		tiled = new Tiled(switch levelNumber {
-			case 1: kha.Assets.blobs.level1_tmx.toString();
-			case 2: kha.Assets.blobs.level2_tmx.toString();
-			case 3: kha.Assets.blobs.level3_tmx.toString();
-			case 4: kha.Assets.blobs.level4_tmx.toString();
-			case 5: kha.Assets.blobs.level5_tmx.toString();
-			default: "";
-		});
+		if (levelNumber < 1 || levelNumber > 10)
+			return;
+		tiled = new Tiled(kha.Assets.blobs.get('level${levelNumber}_tmx').toString());
+
 		for (polygon in tiled.polygons) {
 			for (triangle in polygon.triangles) {
 				var vertices = [];

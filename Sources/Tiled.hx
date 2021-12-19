@@ -21,7 +21,6 @@ class TiledPolygon {
 		g.color = kha.Color.fromBytes(114, 161, 126);
 		for (triangle in triangles) {
 			for (j in 0...3) {
-				// g.drawLine(triangle.points[j % 3].x, triangle.points[j % 3].y, triangle.points[(j + 1) % 3].x, triangle.points[(j + 1) % 3].y);
 				g.fillTriangle(triangle.points[0].x, triangle.points[0].y, triangle.points[1].x, triangle.points[1].y, triangle.points[2].x,
 					triangle.points[2].y);
 			}

@@ -1,4 +1,4 @@
-let project = new Project('Fli');
+let project = new Project('Impulse');
 
 project.addSources('Sources');
 project.addSources('Libraries/nape/haxelib');

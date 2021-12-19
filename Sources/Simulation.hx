@@ -17,9 +17,6 @@ class Simulation {
 	var plane:Plane;
 	var camera:Camera;
 
-	var width = 10000;
-	var height = 2000;
-
 	var touchpad:Touchpad;
 	var level:Level;
 	var target:Target;
@@ -33,7 +30,7 @@ class Simulation {
 		touchpad = new Touchpad();
 
 		initialise();
-		camera = new Camera(width);
+		camera = new Camera();
 	}
 
 	function getCollisionListener() {
@@ -49,7 +46,7 @@ class Simulation {
 	}
 
 	function nextLevel() {
-		if (levelNumber == 5)
+		if (levelNumber == 10)
 			return;
 		levelNumber++;
 		initialise();
@@ -72,13 +69,7 @@ class Simulation {
 			}
 		}
 
-		plane = new Plane(200, 0, space);
-
-		// var boundary = new Body(BodyType.STATIC);
-		// boundary.shapes.add(new Polygon(Polygon.rect(0, 0, -1, height)));
-		// boundary.shapes.add(new Polygon(Polygon.rect(width, 0, 1, height)));
-		// boundary.shapes.add(new Polygon(Polygon.rect(0, height, width, 1)));
-		// boundary.space = space;
+		plane = new Plane(0, 0, space);
 	}
 
 	public function update() {
@@ -90,12 +81,6 @@ class Simulation {
 
 	public function render(g:Graphics) {
 		g.color = kha.Color.fromValue(0xffffedc9);
-		// var interval = 100;
-		// for (x in 0...Math.ceil(Window.get(0).width / interval)) {
-		// 	for (y in 0...Math.ceil(Window.get(0).height / interval)) {
-		// 		g.fillRect((x * interval - camera.position.x) % Window.get(0).width, (y * interval - camera.position.y) % Window.get(0).height, 5, 5);
-		// 	}
-		// }
 
 		camera.follow(plane.body.position.x, plane.body.position.y);
 		camera.transform(g);
@@ -105,7 +90,7 @@ class Simulation {
 		level.render(g);
 		target.render(g);
 
-		plane.render(g);
+		plane.render(g, touchpad.angle);
 		camera.reset(g);
 		touchpad.render(g);
 	}
