@@ -21,7 +21,7 @@ class Simulation {
 	var level:Level;
 	var target:Target;
 
-	var levelNumber = 1;
+	var levelNumber = 11;
 
 	public function new() {
 		var gravity = Vec2.weak(0, 500);
@@ -46,7 +46,7 @@ class Simulation {
 	}
 
 	function nextLevel() {
-		if (levelNumber == 10)
+		if (levelNumber == 15)
 			return;
 		levelNumber++;
 		initialise();
