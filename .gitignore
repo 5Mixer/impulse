@@ -1,2 +1,3 @@
 build
 .gradle
+data/android/app/build.gradle
