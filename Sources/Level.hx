@@ -11,7 +11,7 @@ class Level {
 	public static var callbackType = new CbType();
 
 	public function new(levelNumber) {
-		if (levelNumber < 1 || levelNumber > 20)
+		if (levelNumber < 0 || levelNumber > 20)
 			return;
 		tiled = new Tiled(kha.Assets.blobs.get('level${levelNumber}_tmx').toString());
 

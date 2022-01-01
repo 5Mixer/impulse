@@ -7,9 +7,12 @@ import kha.System;
 
 class Main {
 	var simulation:Simulation;
+	var menu:Menu;
+
+	public static var inMenu = true;
 
 	function new() {
-		System.start({title: "Impulse", width: 800, height: 600}, function(_) {
+		System.start({title: "Impulse", width: 360, height: 740}, function(_) {
 			Input.init();
 			Assets.loadEverything(function() {
 				init();
@@ -24,11 +27,18 @@ class Main {
 	}
 
 	function init() {
+		menu = new Menu();
 		simulation = new Simulation();
 		simulation.initialise();
-		kha.input.Keyboard.get().notify(function(k) {
-			simulation.initialise();
-		}, null);
+
+		menu.levelSelectCallback = (level:Int) -> {
+			simulation.openLevel(level);
+			inMenu = false;
+		}
+
+		simulation.menuCallback = () -> {
+			inMenu = true;
+		}
 	}
 
 	function update() {
@@ -38,7 +48,12 @@ class Main {
 	function render(framebuffer:Framebuffer) {
 		var g = framebuffer.g2;
 		g.begin(true, kha.Color.fromValue(0xead2a1));
-		simulation.render(g);
+		if (inMenu) {
+			menu.render(g);
+		} else {
+			simulation.render(g);
+		}
+
 		g.end();
 	}
 

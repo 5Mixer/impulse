@@ -7,11 +7,12 @@
    id="svg8"
    inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
    sodipodi:docname="logo.svg"
-   inkscape:export-filename="/home/mixer/projects/impulse/resource/logo.png"
+   inkscape:export-filename="/home/mixer/projects/impulse/Assets/logo.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -19,12 +20,38 @@
    xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient42911">
+      <stop
+         style="stop-color:#ead2a1;stop-opacity:1;"
+         offset="0"
+         id="stop42907" />
+      <stop
+         style="stop-color:#ead2a1;stop-opacity:1"
+         offset="0.76910776"
+         id="stop43209" />
+      <stop
+         style="stop-color:#ead2a1;stop-opacity:0;"
+         offset="1"
+         id="stop42909" />
+    </linearGradient>
     <rect
        x="538.80627"
        y="22.216509"
        width="1632.4263"
        height="458.76947"
        id="rect4778" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient42911"
+       id="linearGradient42913"
+       x1="4.7529297e-06"
+       y1="7.2211113"
+       x2="4.7529297e-06"
+       y2="135.46667"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.158307,0,-21.445324)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -33,9 +60,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.59036875"
-     inkscape:cx="1076.4459"
-     inkscape:cy="868.1015"
+     inkscape:zoom="1.0939864"
+     inkscape:cx="516.91685"
+     inkscape:cy="372.49093"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -75,32 +102,32 @@
      id="layer1"
      transform="translate(-4.7529297e-6,-7.2211113)">
     <rect
-       style="fill:#ead2a1;fill-opacity:1;stroke-width:1.19214;stroke-linecap:round;paint-order:markers stroke fill"
+       style="fill:url(#linearGradient42913);fill-opacity:1;stroke-width:1.28304;stroke-linecap:round;paint-order:markers stroke fill"
        id="rect846"
        width="459.86838"
-       height="128.24556"
+       height="148.54773"
        x="4.7529297e-06"
-       y="7.2211113"
+       y="-13.08106"
        ry="0" />
     <path
        style="fill:#fae7c0;fill-opacity:1;stroke:none;stroke-width:0.121648px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 57.199293,76.479544 65.61415,85.829385 32.470577,104.52906 Z"
+       d="M 57.199293,57.809717 65.61415,67.159558 32.470577,85.859233 Z"
        id="path1057"
        sodipodi:nodetypes="cccc" />
     <path
        style="fill:#3e3640;fill-opacity:1;stroke:none;stroke-width:2.47292px;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:0.8;paint-order:stroke fill markers"
-       d="M 46.690015,77.297222 62.859156,96.008024 110.90702,38.145196 Z"
+       d="M 46.690015,58.627395 62.859156,77.338197 110.90702,19.475369 Z"
        id="path942"
        sodipodi:nodetypes="cccc" />
     <text
        xml:space="preserve"
-       transform="matrix(0.26458333,0,0,0.26458333,-1.2415962,16.359366)"
+       transform="matrix(0.26458333,0,0,0.26458333,-1.2415962,-2.3104613)"
        id="text4776"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:320px;line-height:1.25;font-family:'Noto Sans Display';-inkscape-font-specification:'Noto Sans Display Bold';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect4778);fill:#3e3640;fill-opacity:1"><tspan
          x="538.80664"
          y="313.37686"
-         id="tspan38922"><tspan
+         id="tspan45442"><tspan
            style="font-weight:300;font-stretch:condensed;font-family:'Open Sans Condensed';-inkscape-font-specification:'Open Sans Condensed,  Light Condensed'"
-           id="tspan38920">IMPULSE</tspan></tspan></text>
+           id="tspan45440">IMPULSE</tspan></tspan></text>
   </g>
 </svg>

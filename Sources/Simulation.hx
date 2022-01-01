@@ -1,5 +1,7 @@
 package;
 
+import kha.Assets;
+import kha.input.Mouse;
 import nape.callbacks.InteractionType;
 import nape.callbacks.InteractionCallback;
 import nape.callbacks.CbEvent;
@@ -21,7 +23,9 @@ class Simulation {
 	var level:Level;
 	var target:Target;
 
-	var levelNumber = 11;
+	var levelNumber = 1;
+
+	public var menuCallback:() -> Void;
 
 	public function new() {
 		var gravity = Vec2.weak(0, 500);
@@ -31,6 +35,12 @@ class Simulation {
 
 		initialise();
 		camera = new Camera();
+
+		Mouse.get().notify(function(b, x, y) {
+			if (x < 80 && y < 80) {
+				menuCallback();
+			}
+		}, null, null, null);
 	}
 
 	function getCollisionListener() {
@@ -46,9 +56,14 @@ class Simulation {
 	}
 
 	function nextLevel() {
-		if (levelNumber == 15)
+		if (levelNumber == 20)
 			return;
 		levelNumber++;
+		initialise();
+	}
+
+	public function openLevel(level:Int) {
+		levelNumber = level;
 		initialise();
 	}
 
@@ -91,7 +106,20 @@ class Simulation {
 		target.render(g);
 
 		plane.render(g, touchpad.angle);
+
 		camera.reset(g);
 		touchpad.render(g);
+
+		g.color = kha.Color.fromFloats(1, 1, 1, .2);
+		g.drawImage(kha.Assets.images.pause, 20, 20);
+
+		g.color = kha.Color.White;
+		var padding = 30;
+		var horizontalScale = Math.min(Assets.images.tutorial.width, kha.Window.get(0).width - padding * 2) / Assets.images.tutorial.width;
+		var verticalScale = Math.min(Assets.images.tutorial.height, kha.Window.get(0).height / 5) / Assets.images.tutorial.height;
+		var scale = Math.min(horizontalScale, verticalScale);
+		if (levelNumber == 0)
+			g.drawScaledImage(Assets.images.tutorial, kha.Window.get(0).width / 2 - scale * Assets.images.tutorial.width / 2, 100,
+				scale * Assets.images.tutorial.width, scale * Assets.images.tutorial.height);
 	}
 }

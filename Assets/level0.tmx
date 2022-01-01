@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="4" tileheight="4" infinite="1" nextlayerid="5" nextobjectid="20">
+ <objectgroup id="3" name="Colliders">
+  <object id="18" x="-1031.5" y="-44.2656">
+   <polygon points="0,0 666.441,0 923.545,402.571 1941.81,219.892 2550.74,358.593 2993.91,-16.9147 3907.31,-13.5318 2675.91,1248.31 1938.43,984.438 707.037,1299.05"/>
+  </object>
+  <object id="19" x="-371.82" y="-10.4364">
+   <polygon points="0,0 250.338,-876.184 2500,-33.8295 3795.67,-16.9147 77.8078,-1458.05 -480.379,3.38295"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="Entities">
+  <object id="11" type="Target" x="1464.86" y="-13.3553">
+   <point/>
+  </object>
+ </objectgroup>
+</map>
