@@ -8,6 +8,7 @@ import kha.graphics2.Graphics;
 
 class Button {
 	public var text:String;
+	public var secondaryText = "";
 	public var callback:() -> Void;
 	public var x:Float;
 	public var y:Float;
@@ -25,12 +26,16 @@ class Button {
 		this.width = width;
 		this.height = height;
 
-		g.font = Assets.fonts.OpenSansCondensed_Light;
+		g.font = Assets.fonts.OpenSansCondensed_Bold;
 		g.fontSize = 60;
 		g.color = kha.Color.fromValue(0xff72a17e); // Green
 		g.fillRect(x, y, width, height);
 		g.color = kha.Color.fromValue(0xff3e3640); // Black
 		g.drawString(text, x + 20, y + 10);
+
+		g.color = kha.Color.fromValue(0xcc3e3640); // Black
+		g.font = Assets.fonts.OpenSansCondensed_Bold;
+		g.drawString(secondaryText, x + 20 + Assets.fonts.OpenSansCondensed_Bold.width(g.fontSize, text), y + 10);
 
 		g.color = kha.Color.White;
 	}
@@ -106,6 +111,14 @@ class Menu {
 	}
 
 	public function render(g:Graphics) {
+		for (level in 0...21) {
+			if (Main.bestTimes.exists(level)) {
+				var timeSeconds = Main.bestTimes.get(level);
+				buttons[level].text = 'Level $level';
+				buttons[level].secondaryText = ' (${Math.round(timeSeconds * 10) / 10}s)';
+			}
+		}
+
 		if (!mouseGrabbing) {
 			scroll += scrollVelocity;
 		}

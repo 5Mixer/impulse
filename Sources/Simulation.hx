@@ -24,6 +24,7 @@ class Simulation {
 	var target:Target;
 
 	var levelNumber = 1;
+	var attemptTime = 0.;
 
 	public var menuCallback:() -> Void;
 
@@ -56,8 +57,14 @@ class Simulation {
 	}
 
 	function nextLevel() {
-		if (levelNumber == 20)
+		if (!Main.bestTimes.exists(levelNumber) || (Main.bestTimes.get(levelNumber) > attemptTime)) {
+			Main.bestTimes.set(levelNumber, attemptTime);
+			Main.saveBestTimes();
+		}
+		if (levelNumber == 20) {
+			menuCallback();
 			return;
+		}
 		levelNumber++;
 		initialise();
 	}
@@ -68,6 +75,7 @@ class Simulation {
 	}
 
 	public function initialise() {
+		attemptTime = 0;
 		space.clear();
 		space.listeners.add(getCollisionListener());
 		space.listeners.add(getTargetListener());
@@ -92,6 +100,7 @@ class Simulation {
 		touchpad.screenPosition.y = Window.get(0).height - 160;
 		plane.update(touchpad);
 		space.step(1 / 60);
+		attemptTime += 1 / 60;
 	}
 
 	public function render(g:Graphics) {

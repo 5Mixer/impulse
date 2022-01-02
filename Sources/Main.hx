@@ -1,5 +1,6 @@
 package;
 
+import kha.Storage;
 import kha.Assets;
 import kha.Framebuffer;
 import kha.Scheduler;
@@ -11,8 +12,20 @@ class Main {
 
 	public static var inMenu = true;
 
+	public static var bestTimes = new Map<Int, Float>();
+
+	public static function saveBestTimes() {
+		Storage.namedFile("bestTimes").writeObject(bestTimes);
+	}
+
 	function new() {
 		System.start({title: "Impulse", width: 360, height: 740}, function(_) {
+			if (Storage.namedFile("bestTimes") != null) {
+				var saves = Storage.namedFile("bestTimes").readObject();
+				if (saves != null)
+					bestTimes = saves;
+			}
+
 			Input.init();
 			Assets.loadEverything(function() {
 				init();
