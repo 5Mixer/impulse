@@ -86,6 +86,7 @@ class Menu {
 		if (Scheduler.realTime() - downTime < .5 && downPos.sub(new Vector2(x, y)).length < 20) {
 			for (button in buttons) {
 				if (x > button.x && x < button.x + button.width && y > button.y && y < button.y + button.height) {
+					scrollVelocity = 0;
 					button.callback();
 				}
 			}

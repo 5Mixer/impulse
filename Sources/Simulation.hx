@@ -1,5 +1,7 @@
 package;
 
+import kha.input.KeyCode;
+import kha.input.Keyboard;
 import kha.Assets;
 import kha.input.Mouse;
 import nape.callbacks.InteractionType;
@@ -42,6 +44,12 @@ class Simulation {
 				menuCallback();
 			}
 		}, null, null, null);
+
+		Keyboard.get().notify(function(key) {
+			if (key == KeyCode.Back) {
+				menuCallback();
+			}
+		}, null);
 	}
 
 	function getCollisionListener() {
