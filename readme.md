@@ -1,13 +1,12 @@
-## LD48 - Play at https://5mixer.itch.io/orbdig
-An entry into Ludum Dare 48, theme: 'deeper and deeper'. Gameplay is digging deeper and deeper through fun explosions and lasers!
+## Impulse - Published on [Google Play](https://play.google.com/store/apps/details?id=com.danielblaker.impulse)
+![Logo](./resource/logo.png)
+An arcade game where you navigate a rocket through various levels.
 
-Made in 17 hours (streamed and recorded!) with:
+Made over the weekends of December 2020 as a short experiment in Android game development.
 
  - Haxe
  - Kha
- - Nape (physics)
- - jsfxr for sounds
+ - Nape
 
-![orbdig2](https://user-images.githubusercontent.com/8501694/115995719-b2451180-a61f-11eb-9ddd-a213fd242e0a.png)
+![Impulse](./resource/phone 2.png)
 
-![orbdig1](https://user-images.githubusercontent.com/8501694/115995726-bbce7980-a61f-11eb-91da-3bf851352919.png)
