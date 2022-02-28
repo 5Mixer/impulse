@@ -8,5 +8,5 @@ Made over the weekends of December 2020 as a short experiment in Android game de
  - Kha
  - Nape
 
-![Impulse](./resource/phone 2.png)
+![Impulse](./resource/phone%202.png)
 
